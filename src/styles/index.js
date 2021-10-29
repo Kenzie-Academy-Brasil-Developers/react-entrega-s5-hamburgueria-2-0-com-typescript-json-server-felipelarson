@@ -150,5 +150,15 @@ export const outerTheme = createTheme({
         },
       ],
     },
-  },
+    MuiTextField: {
+      variants: [
+        {
+          props: { variant: 'outlined' },
+          style: {
+            color: "#E0E0E0",
+          },
+        },
+      ],
+    },
+  }
 });
