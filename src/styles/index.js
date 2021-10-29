@@ -1,5 +1,74 @@
 import { createTheme } from "@mui/material";
 
+// interface Props {
+//   palette: {
+//     primary: {
+//       main: string;
+//       contrastText: string;
+//     },
+//     secondary: {
+//       main: string;
+//     },
+//     error: {
+//       main: string;
+//     },
+//     warning: {
+//       main: string;
+//     },
+//     success: {
+//       main: string;
+//     },
+//     info: {
+//       main: string;
+//     },
+//     grey: {
+//       600: string;
+//       300: string;
+//       100: string;
+//       0: string;
+//     },
+//     typografy: {
+//       fontFamily: string;
+//       h1: {
+//         fontFamily: string;
+//         fontWeight: string;
+//         fontSize: string;
+//       },
+//       h2: {
+//         fontFamily: string;
+//         fontWeight: string;
+//         fontSize: string;
+//       },
+//       h3: {
+//         fontFamily: string;
+//         fontWeight: string;
+//         fontSize: string;
+//       },
+//       subtitle1: {
+//         fontFamily: string;
+//         fontWeight: string;
+//         fontSize: string;
+//       },
+//       body1: {
+//         fontFamily: string;
+//         fontWeight: string;
+//         fontSize: string;
+//       },
+//       body2: {
+//         fontFamily: string;
+//         fontWeight: string;
+//         fontSize: string;
+//       },
+//       caption: {
+//         fontFamily: string;
+//         fontWeight: string;
+//         fontSize: string;
+//       }
+//     }
+//   };
+//   bar: boolean;
+// }
+
 export const outerTheme = createTheme({
   palette: {
     primary: {
@@ -25,7 +94,7 @@ export const outerTheme = createTheme({
       600: "#333333",
       300: "#828282",
       100: "#E0E0E0",
-      0: "#F5F5F5"
+      0: "#F5F5F5",
     },
     typografy: {
       fontFamily: "'Inter', sans-serif",
