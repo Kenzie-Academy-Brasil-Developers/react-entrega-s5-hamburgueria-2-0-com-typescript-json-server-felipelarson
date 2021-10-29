@@ -1,8 +1,13 @@
+import { Button } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import { outerTheme } from "./styles";
+
+
 function App() {
   return (
-    <div>
-      
-    </div>
+    <ThemeProvider theme={outerTheme}>
+        <Button variant="contained">Teste</Button>
+    </ThemeProvider>
   );
 }
 
