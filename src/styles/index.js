@@ -25,6 +25,44 @@ export const outerTheme = createTheme({
       300: "#828282",
       100: "#E0E0E0",
       0: "#F5F5F5"
+    },
+    typografy: {
+      fontFamily: "'Inter', sans-serif",
+      h1: {
+        fontFamily: "'Inter', sans-serif",
+        fontWeight: "bold",
+        fontSize: "26px"
+      },
+      h2: {
+        fontFamily: "'Inter', sans-serif",
+        fontWeight: "bold",
+        fontSize: "22px"
+      },
+      h3: {
+        fontFamily: "'Inter', sans-serif",
+        fontWeight: "bold",
+        fontSize: "18px"
+      },
+      subtitle1: {
+        fontFamily: "'Inter', sans-serif",
+        fontWeight: "regular",
+        fontSize: "16px"
+      },
+      body1: {
+        fontFamily: "'Inter', sans-serif",
+        fontWeight: "regular",
+        fontSize: "14px"
+      },
+      body2: {
+        fontFamily: "'Inter', sans-serif",
+        fontWeight: "semiBold",
+        fontSize: "14px"
+      },
+      caption: {
+        fontFamily: "'Inter', sans-serif",
+        fontWeight: "regular",
+        fontSize: "12px"
+      }
     }
   }
 });
