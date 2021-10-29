@@ -4,8 +4,9 @@ export const outerTheme = createTheme({
   palette: {
     primary: {
       main: "#27AE60",
+      contrastText: '#fff'
     },
-    secodary: {
+    secondary: {
       main: "#EB5757"
     },
     error: {
