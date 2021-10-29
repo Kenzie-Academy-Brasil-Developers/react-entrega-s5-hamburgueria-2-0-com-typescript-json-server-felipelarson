@@ -134,5 +134,21 @@ export const outerTheme = createTheme({
         fontSize: "12px"
       }
     }
-  }
+  },
+  components: {
+    MuiButton: {
+      variants: [
+        {
+          props: { variant: 'contained' },
+          style: {
+            boxShadow: "none",
+            ":hover": {
+              opacity: "0.5",
+              boxShadow: "none",
+            }
+          },
+        },
+      ],
+    },
+  },
 });
