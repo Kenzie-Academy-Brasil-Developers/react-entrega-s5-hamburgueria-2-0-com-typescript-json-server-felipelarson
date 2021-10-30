@@ -142,6 +142,7 @@ export const outerTheme = createTheme({
           props: { variant: 'contained' },
           style: {
             boxShadow: "none",
+            height: '60px',
             ":hover": {
               opacity: "0.5",
               boxShadow: "none",

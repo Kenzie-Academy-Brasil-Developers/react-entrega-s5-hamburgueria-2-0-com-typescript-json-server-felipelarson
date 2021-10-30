@@ -19,82 +19,103 @@ export default function Login() {
 
   return (
       <Grid container component="main" sx={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center',  }}>
-        <CssBaseline />
-        
-        <Grid 
-          item 
-          xs={12} 
-          sm={8} 
-          md={6} 
-          component={Paper} 
-          elevation={6} 
-          square 
-          sx={{height: '460px', width: '500px'}}
-        >
-          <Box
+        <Grid container sx={{ height: '461px', maxWidth: '940px', display: 'flex', justifyContent: 'space-between', alignItems: 'center',  }}>
+          <CssBaseline />
+          
+          <Grid 
+            item 
+            // xs={12} 
+            // sm={8} 
+            // md={6} 
+            component={Paper} 
+            elevation={1}
+            sx={{height: '460px', width: '500px', p: 2}}
+          >
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100%'
+              }}
+            >
+              <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                <Typography component="h1" variant="h5" sx={{mt: 1}}>
+                  Login
+                </Typography>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="nome"
+                  label="Nome"
+                  name="nome"
+                  autoComplete="nome"
+                  autoFocus
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Senha"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                />
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  Logar
+                </Button>
+                <Grid container>
+                  <Grid item xs>
+                    <Link href="/signup" variant="subtitle1">
+                      Crie sua conta para saborear muitas delícias e matar sua fome
+                    </Link>
+                  </Grid>
+                </Grid>
+                <Button
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  Cadastrar
+                </Button>
+              </Box>
+            </Box>
+          </Grid>
+          <Grid
+            item
+            // xs={12}
+            // sm={4}
+            // md={6}
             sx={{
               display: 'flex',
-              flexDirection: 'column',
+              justifyContent: 'flex-start',
               alignItems: 'center',
-              justifyContent: 'center',
-              height: '100%'
+              flexDirection: 'column',
+              height: '100%',
             }}
           >
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-              <Typography component="h1" variant="h5" sx={{mt: 1}}>
-                Login
+            <img src={brand} alt="Brand"/>
+            <Grid 
+              component={Paper} 
+              elevation={2}
+              sx={{height: "95px", width: "377px", p: 1, display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}
+            >
+              <Box component="span" sx={{background: 'lightgreen', mx: 2, height: '60px', width: '60px'}}> 
+                icone
+              </Box>
+              <Typography>
+                A vida é como um sanduíche, é preciso recheá-la com os <b>melhores</b> ingredientes.
               </Typography>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="nome"
-                label="Nome"
-                name="nome"
-                autoComplete="nome"
-                autoFocus
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Senha"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Logar
-              </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link href="/signup" variant="subtitle1">
-                    Crie sua conta para saborear muitas delícias e matar sua fome
-                  </Link>
-                </Grid>
-              </Grid>
-            </Box>
-          </Box>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={4}
-          md={6}
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column'
-          }}
-        >
-          <img src={brand} alt="Brand"/>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
   );
