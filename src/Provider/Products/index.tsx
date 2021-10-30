@@ -17,7 +17,7 @@ export const ProductsProvider = ({ children }:ProductsProps) => {
             .then(res => setListProducts(res.data))
             .catch(console.log)
     }
-
+    
     useEffect(() => {
         getAllProducts()
     }, [])
