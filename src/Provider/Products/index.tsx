@@ -1,0 +1,30 @@
+import { createContext, ReactNode, useEffect, useState } from "react";
+import api from '../../services/api'
+
+interface ProductsProps {
+    children: ReactNode;
+}
+
+export const ProductsContext = createContext({})
+
+export const ProductsProvider = ({ children }:ProductsProps) => {
+    
+    const [listProducts, setListProducts] = useState<ProductsProps[]>([])
+
+    const getAllProducts = () => {
+        api
+            .get('/products')
+            .then(res => setListProducts(res.data))
+            .catch(console.log)
+    }
+
+    useEffect(() => {
+        getAllProducts()
+    }, [])
+
+    return (
+        <ProductsContext.Provider value={{ listProducts, getAllProducts }}>
+            {children}
+        </ProductsContext.Provider>
+    )
+}
