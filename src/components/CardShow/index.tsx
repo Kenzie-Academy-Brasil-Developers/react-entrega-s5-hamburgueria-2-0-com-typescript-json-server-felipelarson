@@ -32,7 +32,7 @@ export default function CardShow({item}: any) {
             {item.category}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {item.price}
+            R$ {item.price}
           </Typography>
         </CardContent>
         <CardActions>
