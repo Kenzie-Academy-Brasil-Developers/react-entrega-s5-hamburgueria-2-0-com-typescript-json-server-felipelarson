@@ -1,13 +1,13 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { outerTheme } from "./styles";
 
-import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 
 function App() {
   return (
     <ThemeProvider theme={outerTheme}>
-      <Login />
+      <SignUp />
     </ThemeProvider>
   );
 }
