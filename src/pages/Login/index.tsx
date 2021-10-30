@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {Link, Paper, Box, Grid, TextField, CssBaseline, Button} from '@mui/material';
 import Typography from '@mui/material/Typography';
 
