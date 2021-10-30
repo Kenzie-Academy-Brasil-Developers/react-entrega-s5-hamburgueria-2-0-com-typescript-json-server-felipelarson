@@ -1,21 +1,46 @@
 import * as React from 'react';
 import {Link, Paper, Box, Grid, TextField, CssBaseline, Button} from '@mui/material';
-// import { LockOutlinedIcon } from '@mui/icons-material';
 import Typography from '@mui/material/Typography';
 
 import brand from './../../assets/BurguerKenzie.png'
+import { useAuth } from '../../Provider/Auth';
+
+import * as yup from 'yup';
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Redirect } from "react-router-dom";
+
+interface RegisterForm {
+  email: string;
+  password: string;
+}
 
 export default function Login() {
+
+  const {signIn, authToken}: any = useAuth();
+
+  const formSchema = yup.object().shape({
+    email: yup.string().email("Email inválido").required("Email Obrigatório"),
+    password: yup.string().required("Senha Obrigatória"),
+  })
   
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterForm>({ resolver: yupResolver(formSchema) })
+
+  if(authToken) return <Redirect to="/dashboard"/>
+
+  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   // eslint-disable-next-line no-console
+  //   console.log({
+  //     email: data.get('email'),
+  //     password: data.get('password'),
+  //   });
+  // };
 
   return (
       <Grid container component="main" sx={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center',  }}>
@@ -40,7 +65,7 @@ export default function Login() {
               height: '100%'
             }}
           >
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={handleSubmit(signIn)} sx={{ mt: 1 }}>
               <Typography component="h1" variant="h5" sx={{mt: 1}}>
                 Login
               </Typography>
@@ -48,22 +73,24 @@ export default function Login() {
                 margin="normal"
                 required
                 fullWidth
-                id="nome"
-                label="Nome"
-                name="nome"
-                autoComplete="nome"
+                id="email"
+                label="Email"
+                autoComplete="email"
                 autoFocus
+                {...register("email")}
               />
+              <small>{errors.email?.message}</small>
               <TextField
                 margin="normal"
                 required
                 fullWidth
-                name="password"
                 label="Senha"
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                {...register("password")}
               />
+              <small>{errors.password?.message}</small>
               <Button
                 type="submit"
                 fullWidth

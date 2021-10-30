@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { useHistory } from "react-router-dom"
-import axios from "axios";
+import api from "../../services/api";
 
 export const AuthContext = createContext({});
 
@@ -16,18 +16,18 @@ interface Login {
 export const AuthProvider = ({ children }: AuthProps) => {
   const history = useHistory();
   const [authToken, setAuthToken] = useState(
-    () => localStorage.getItem("@refLogin_token") || ""
+    () => localStorage.getItem("@kenzie_hamburguer_token") || ""
     );
     
     const signIn = (userData: Login) => {
-    axios
-      .post("https://kenziehub.herokuapp.com/sessions", userData)
-      .then((response) => {
-        localStorage.setItem("@refLogin_token", response.data.token);
+    api
+      .post("/login", userData)
+      .then((response: any) => {
+        localStorage.setItem("@kenzie_hamburguer_token", response.data.token);
         setAuthToken(response.data.token);
         history.push("/dashboard");
       })
-      .catch((err) => console.log(err));
+      .catch((err:any) => console.log(err));
   };
 
   const logout = () => {
