@@ -79,7 +79,7 @@ export default function Login() {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="subtitle1">
+                  <Link href="/signup" variant="subtitle1">
                     Crie sua conta para saborear muitas delícias e matar sua fome
                   </Link>
                 </Grid>
