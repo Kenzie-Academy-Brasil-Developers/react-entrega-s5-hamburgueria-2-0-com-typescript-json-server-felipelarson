@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Link, Paper, Box, Grid, TextField, CssBaseline, Button, Avatar} from '@mui/material';
+import {Link, Paper, Box, Grid, TextField, CssBaseline, Button} from '@mui/material';
 // import { LockOutlinedIcon } from '@mui/icons-material';
 import Typography from '@mui/material/Typography';
 
@@ -43,10 +43,8 @@ export default function Login() {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              
-            </Avatar>
-            <Typography component="h1" variant="h5">
+            <img src={brand} alt="Brand"/>
+            <Typography component="h1" variant="h5" sx={{marginTop: "1rem"}}>
                 Login
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
