@@ -1,9 +1,13 @@
 import { Container, Grid } from '@mui/material';
 import CardShow from '../../components/CardShow';
 import Navbar from '../../components/Navbar';
+import { useProducts } from '../../Provider/Products';
 
 
 export default function Dashboard() {
+
+  const {listProducts, getAllProducts} = useProducts()
+
   return (
     <>
       <Navbar />

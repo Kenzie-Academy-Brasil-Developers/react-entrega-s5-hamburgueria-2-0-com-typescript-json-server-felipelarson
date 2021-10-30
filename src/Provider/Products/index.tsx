@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import api from '../../services/api'
 
 interface ProductsProps {
@@ -28,3 +28,5 @@ export const ProductsProvider = ({ children }:ProductsProps) => {
         </ProductsContext.Provider>
     )
 }
+
+export const useProducts = () => useContext(ProductsContext);
