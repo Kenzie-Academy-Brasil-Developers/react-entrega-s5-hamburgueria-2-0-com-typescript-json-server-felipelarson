@@ -18,30 +18,19 @@ export default function Login() {
   };
 
   return (
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      <Grid container component="main" sx={{ height: '100vh', display: 'flex',  }}>
         <CssBaseline />
-        <Grid
-          item
-          xs={12}
-          sm={4}
-          md={6}
-          sx={{
-            // backgroundImage: 'url(https://source.unsplash.com/random)',
-            // backgroundRepeat: 'no-repeat',
-            // backgroundColor: (t) =>
-            //   t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            // backgroundSize: 'cover',
-            // backgroundPosition: 'center',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column'
-          }}
+        
+        <Grid 
+          item 
+          xs={12} 
+          sm={8} 
+          md={6} 
+          component={Paper} 
+          elevation={6} 
+          square 
+          sx={{height: '460px', width: '500px'}}
         >
-          <img src={brand} alt="Brand"/>
-        </Grid>
-        <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square>
-          
           <Box
             sx={{
               display: 'flex',
@@ -92,6 +81,20 @@ export default function Login() {
               </Grid>
             </Box>
           </Box>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          sm={4}
+          md={6}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column'
+          }}
+        >
+          <img src={brand} alt="Brand"/>
         </Grid>
       </Grid>
   );
