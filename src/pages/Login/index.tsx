@@ -18,7 +18,7 @@ export default function Login() {
   };
 
   return (
-      <Grid container component="main" sx={{ height: '100vh', display: 'flex',  }}>
+      <Grid container component="main" sx={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center',  }}>
         <CssBaseline />
         
         <Grid 
