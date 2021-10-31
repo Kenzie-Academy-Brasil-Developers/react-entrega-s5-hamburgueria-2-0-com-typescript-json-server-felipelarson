@@ -122,7 +122,7 @@ export default function Navbar() {
     >
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
+          <Badge badgeContent={4} color="primary">
             <ShoppingCartIcon />
           </Badge>
         </IconButton>
@@ -134,7 +134,7 @@ export default function Navbar() {
           aria-label="show 17 new notifications"
           color="inherit"
         >
-          <Badge badgeContent={17} color="error">
+          <Badge badgeContent={17} color="primary">
             <NotificationsIcon />
           </Badge>
         </IconButton>
@@ -190,7 +190,7 @@ export default function Navbar() {
               />
             </Search>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
+              <Badge badgeContent={4} color="primary">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
@@ -199,7 +199,7 @@ export default function Navbar() {
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={17} color="error">
+              <Badge badgeContent={17} color="primary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
