@@ -22,6 +22,7 @@ export default function CardShow({item}: any) {
           component="img"
           height="140"
           image={imgDefault} alt="Produtos"
+          sx={{background: '#e0e0e0'}}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -35,8 +36,7 @@ export default function CardShow({item}: any) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
+          <Button variant="contained">Adicionar</Button>
         </CardActions>
       </Card>
   );
