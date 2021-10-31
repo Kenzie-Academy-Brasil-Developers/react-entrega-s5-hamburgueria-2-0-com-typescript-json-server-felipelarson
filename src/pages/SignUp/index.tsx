@@ -42,7 +42,20 @@ export default function SignUp() {
   return (
       <Grid container component="main" sx={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center',  }}>
         <CssBaseline />
-        
+        <Grid
+          item
+          xs={12}
+          sm={4}
+          md={6}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column'
+          }}
+        >
+          <img src={brand} alt="Brand"/>
+        </Grid>
         <Grid 
           item 
           xs={12} 
@@ -139,20 +152,7 @@ export default function SignUp() {
             </Box>
           </Box>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={4}
-          md={6}
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column'
-          }}
-        >
-          <img src={brand} alt="Brand"/>
-        </Grid>
+        
       </Grid>
   );
 }
