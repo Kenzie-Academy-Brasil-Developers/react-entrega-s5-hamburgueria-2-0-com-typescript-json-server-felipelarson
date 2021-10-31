@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import imgDefault from '../../assets/default.png'
 
 // interface CardProps {
 //     "name": string;
@@ -14,15 +15,13 @@ import Typography from '@mui/material/Typography';
 // }
 
 export default function CardShow({item}: any) {
-  console.log(item)
   return (
 
       <Card sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"
           height="140"
-          image="https://picsum.photos/140"
-          alt="green iguana"
+          image={imgDefault} alt="Produtos"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
