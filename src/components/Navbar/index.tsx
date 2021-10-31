@@ -17,6 +17,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import brand from './../../assets/BurguerKenzie.png'
 import { useAuth } from '../../Provider/Auth';
+import { useModalCart } from '../../Provider/ModalCart';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -60,7 +61,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Navbar() {
 
-  const {logout}:any = useAuth()
+  const {logout}:any = useAuth();
+  const {handleOpenModalCart} :any = useModalCart();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -195,7 +197,7 @@ export default function Navbar() {
                 sx={{color: "#e0e0e0", ml:2}}
               />
             </Search>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+            <IconButton size="large" aria-label="show 4 new mails" color="inherit" onClick={handleOpenModalCart}>
               <Badge badgeContent={4} color="primary">
                 <ShoppingCartIcon />
               </Badge>
