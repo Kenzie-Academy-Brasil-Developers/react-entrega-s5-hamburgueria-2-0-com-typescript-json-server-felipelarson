@@ -2,7 +2,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useModalCart } from '../../Provider/ModalCart';
-import { AppBar } from '@mui/material';
+import { AppBar, Button, Toolbar } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -28,8 +29,13 @@ export default function Cart() {
         aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-                <AppBar>
-                    <Typography>Carrinho de compras</Typography> 
+                <AppBar position="fixed">
+                     <Toolbar>
+                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                            Carrinho de compras
+                        </Typography>
+                        <Button color="inherit" onClick={handleOpenModalCart}><CloseIcon/></Button>
+                    </Toolbar>
                 </AppBar>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Sua sacola está vazia
