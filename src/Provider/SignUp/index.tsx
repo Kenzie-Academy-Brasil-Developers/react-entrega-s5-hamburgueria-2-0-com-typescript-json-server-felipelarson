@@ -18,7 +18,7 @@ interface SignUp {
 export const SignUpProvider = ({ children }: SignUpProps) => {
   const history = useHistory();
     
-    const signIn = (userData: SignUp) => {
+    const signUp = (userData: SignUp) => {
     api
       .post("/register", userData)
       .then((response: any) => {
@@ -27,13 +27,8 @@ export const SignUpProvider = ({ children }: SignUpProps) => {
       .catch((err:any) => console.log(err));
   };
 
-  const logout = () => {
-    localStorage.clear();
-    history.push("/");
-  };
-
   return (
-    <SignUpContext.Provider value={{ logout, signIn }}>
+    <SignUpContext.Provider value={{ signUp }}>
       {children}
     </SignUpContext.Provider>
   );
