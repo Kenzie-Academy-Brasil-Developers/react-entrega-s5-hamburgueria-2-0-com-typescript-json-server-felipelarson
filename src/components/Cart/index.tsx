@@ -2,8 +2,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useModalCart } from '../../Provider/ModalCart';
-import { AppBar, Button, Toolbar } from '@mui/material';
+import { AppBar, Button, Divider, Toolbar } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import ProductsFromCart from '../ProductsFromCart';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -37,12 +38,16 @@ export default function Cart() {
                         <Button color="inherit" onClick={handleOpenModalCart}><CloseIcon/></Button>
                     </Toolbar>
                 </AppBar>
-                <Typography id="modal-modal-title" variant="h6" component="h2" sx={{mt:'50px'}}>
+                {/* <Typography id="modal-modal-title" variant="h6" component="h2" sx={{mt:'50px'}}>
                     Sua sacola está vazia
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                     Adicione itens
-                </Typography>
+                </Typography> */}
+                <Box sx={{mt:'50px'}}>
+                    <ProductsFromCart />
+                    <Divider />
+                </Box>
             </Box>
         </Modal>
     </div>
