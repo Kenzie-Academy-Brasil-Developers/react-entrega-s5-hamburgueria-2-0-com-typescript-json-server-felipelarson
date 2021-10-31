@@ -140,7 +140,7 @@ export default function SignUp() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Logar
+                Cadastrar
               </Button>
               <Grid container>
                 <Grid item xs>
