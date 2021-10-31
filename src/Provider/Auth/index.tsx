@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
       .then((response: any) => {
         localStorage.setItem("@kenzie_hamburguer_token", response.data.accessToken);
         setAuthToken(response.data.accessToken);
-        history.push("/");
+        history.push("/dashboard");
       })
       .catch((err:any) => console.log(err));
   };

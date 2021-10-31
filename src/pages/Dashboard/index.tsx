@@ -1,6 +1,8 @@
 import { Container, Grid } from '@mui/material';
+import { Redirect } from 'react-router-dom';
 import CardShow from '../../components/CardShow';
 import Navbar from '../../components/Navbar';
+import { useAuth } from '../../Provider/Auth';
 import { useProducts } from '../../Provider/Products';
 
 // interface dashboardProps {
@@ -14,6 +16,9 @@ import { useProducts } from '../../Provider/Products';
 export default function Dashboard() {
 
   const {listProducts}:any  = useProducts()
+  const {authToken} :any = useAuth()
+
+  if(!authToken) return <Redirect to="/login"/>
 
   return (
     <>
