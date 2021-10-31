@@ -37,7 +37,7 @@ export default function Cart() {
                         <Button color="inherit" onClick={handleOpenModalCart}><CloseIcon/></Button>
                     </Toolbar>
                 </AppBar>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
+                <Typography id="modal-modal-title" variant="h6" component="h2" sx={{mt:'50px'}}>
                     Sua sacola está vazia
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
