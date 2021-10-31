@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useModalCart } from '../../Provider/ModalCart';
-import { AppBar, Button, Divider, Toolbar } from '@mui/material';
+import { AppBar, Button, Toolbar } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import ProductsFromCart from '../ProductsFromCart';
 
@@ -46,8 +46,12 @@ export default function Cart() {
                 </Typography> */}
                 <Box sx={{mt:'50px'}}>
                     <ProductsFromCart />
-                    <Divider />
                 </Box>
+                <Box sx={{mt:1, display: 'flex', justifyContent: 'space-between'}}>
+                    <Typography>Total</Typography>
+                    <Typography>R$ 20,00</Typography>
+                </Box>
+                <Button fullWidth variant="contained" sx={{mt:1}}>RemoverTodos</Button>
             </Box>
         </Modal>
     </div>
