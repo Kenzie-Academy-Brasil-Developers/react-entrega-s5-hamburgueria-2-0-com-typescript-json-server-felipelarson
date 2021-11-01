@@ -6,15 +6,23 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import imgDefault from '../../assets/default.png'
+import { useListCart } from '../../Provider/Cart';
 
 // interface CardProps {
+//   item: {
 //     "name": string;
 //     "category": string;
 //     "price": number;
 //     "userId": number;
+//   };
+//   addToCart: () => void;
 // }
 
 export default function CardShow({item}: any) {
+
+
+  const { addToCart } :any = useListCart()
+
   return (
 
       <Card sx={{ maxWidth: 345 }}>
@@ -36,7 +44,7 @@ export default function CardShow({item}: any) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button variant="contained">Adicionar</Button>
+          <Button variant="contained" onClick={() => addToCart(item)}>Adicionar</Button>
         </CardActions>
       </Card>
   );
