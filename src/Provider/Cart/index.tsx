@@ -6,10 +6,10 @@ interface CartProps {
     children: ReactNode;
 }
 
-export const CartProvider = ({ children }:CartProps) => {
+export const CartProvider = ({ children }: CartProps) => {
     const [cart, setCart] = useState<any[]>([]);
 
-    const addToCart = (item:any) => {
+    const addToCart = (item: any) => {
         const plusSameCart = cart.filter(elm => item.id === elm.id)
         if (plusSameCart.length !== 0) {
             plusSameCart[0]["quantity"] += 1
@@ -22,7 +22,7 @@ export const CartProvider = ({ children }:CartProps) => {
         }
     };
 
-    const removeFromCart = (item:any) => {
+    const removeFromCart = (item: any) => {
         const newCart = cart.filter(
             (itemOnCart) => itemOnCart.name !== item.name
         );

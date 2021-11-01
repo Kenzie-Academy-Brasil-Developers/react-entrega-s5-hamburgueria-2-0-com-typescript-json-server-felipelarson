@@ -9,7 +9,6 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -61,8 +60,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Navbar() {
 
-  const {logout}:any = useAuth();
-  const {handleOpenModalCart} :any = useModalCart();
+  const { logout }: any = useAuth();
+  const { handleOpenModalCart }: any = useModalCart();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -70,7 +69,7 @@ export default function Navbar() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const handleProfileMenuOpen = (event :any) => {
+  const handleProfileMenuOpen = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -83,7 +82,7 @@ export default function Navbar() {
     handleMobileMenuClose();
   };
 
-  const handleMobileMenuOpen = (event :any) => {
+  const handleMobileMenuOpen = (event: any) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
@@ -165,7 +164,7 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="absolute" sx={{background: "#E0E0E0"}}>
+      <AppBar position="absolute" sx={{ background: "#E0E0E0" }}>
         <Toolbar>
           {/* <IconButton
             size="large"
@@ -180,21 +179,21 @@ export default function Navbar() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: 'none', sm: 'block' }, lineHeight:"100%"  }}
+            sx={{ display: { xs: 'none', sm: 'block' }, lineHeight: "100%" }}
           >
             <img src={brand} alt='Brand' />
           </Typography>
-          
+
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <Search sx={{background: "#fff", display: 'flex', alignItems: 'center', px: 1}}>
-              <SearchIconWrapper sx={{background: '#27AE60', height: '40px', width: '30px', borderRadius: '8px'}}>
+            <Search sx={{ background: "#fff", display: 'flex', alignItems: 'center', px: 1 }}>
+              <SearchIconWrapper sx={{ background: '#27AE60', height: '40px', width: '30px', borderRadius: '8px' }}>
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
                 placeholder="digitar pesquisa"
                 inputProps={{ 'aria-label': 'search' }}
-                sx={{color: "#e0e0e0", ml:2}}
+                sx={{ color: "#e0e0e0", ml: 2 }}
               />
             </Search>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit" onClick={handleOpenModalCart}>

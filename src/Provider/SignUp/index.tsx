@@ -5,7 +5,7 @@ import api from "../../services/api";
 export const SignUpContext = createContext({});
 
 interface SignUpProps {
-  children : ReactNode;
+  children: ReactNode;
 }
 
 interface SignUp {
@@ -17,14 +17,14 @@ interface SignUp {
 
 export const SignUpProvider = ({ children }: SignUpProps) => {
   const history = useHistory();
-    
-    const signUp = (userData: SignUp) => {
+
+  const signUp = (userData: SignUp) => {
     api
       .post("/register", userData)
-      .then((response: any) => {
+      .then((_: any) => {
         history.push("/login");
       })
-      .catch((err:any) => console.log(err));
+      .catch((err: any) => console.log(err));
   };
 
   return (

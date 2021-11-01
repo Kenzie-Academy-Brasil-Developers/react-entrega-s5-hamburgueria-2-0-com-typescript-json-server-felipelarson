@@ -7,8 +7,8 @@ interface ProductsProps {
 
 export const ProductsContext = createContext({})
 
-export const ProductsProvider = ({ children }:ProductsProps) => {
-    
+export const ProductsProvider = ({ children }: ProductsProps) => {
+
     const [listProducts, setListProducts] = useState<ProductsProps[]>([])
 
     const getAllProducts = () => {
@@ -17,7 +17,7 @@ export const ProductsProvider = ({ children }:ProductsProps) => {
             .then(res => setListProducts(res.data))
             .catch(console.log)
     }
-    
+
     useEffect(() => {
         getAllProducts()
     }, [])

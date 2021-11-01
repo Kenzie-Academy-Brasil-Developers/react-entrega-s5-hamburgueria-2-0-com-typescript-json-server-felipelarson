@@ -18,34 +18,38 @@ import { useListCart } from '../../Provider/Cart';
 //   addToCart: () => void;
 // }
 
-export default function CardShow({item}: any) {
+// interface CardToCartProps {
+//   addToCart: () => {}
+// }
+
+export default function CardShow({ item }: any) {
 
 
-  const { addToCart } :any = useListCart()
+  const { addToCart }: any = useListCart()
 
   return (
 
-      <Card sx={{ maxWidth: 345 }}>
-        <CardMedia
-          component="img"
-          height="140"
-          image={imgDefault} alt="Produtos"
-          sx={{background: '#e0e0e0'}}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {item.name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {item.category}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            R$ {item.price}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button variant="contained" onClick={() => addToCart(item)}>Adicionar</Button>
-        </CardActions>
-      </Card>
+    <Card sx={{ maxWidth: 345 }}>
+      <CardMedia
+        component="img"
+        height="140"
+        image={imgDefault} alt="Produtos"
+        sx={{ background: '#e0e0e0' }}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {item.name}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {item.category}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          R$ {item.price}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button variant="contained" onClick={() => addToCart(item)}>Adicionar</Button>
+      </CardActions>
+    </Card>
   );
 }

@@ -6,8 +6,8 @@ interface ModalCartProps {
 
 export const ModalCartContext = createContext({})
 
-export const ModalCartProvider = ({ children }:ModalCartProps) => {
-    
+export const ModalCartProvider = ({ children }: ModalCartProps) => {
+
     const [openModalCart, setOpenModalCart] = useState(false);
     const handleOpenModalCart = () => setOpenModalCart(!openModalCart);
 

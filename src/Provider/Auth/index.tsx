@@ -5,7 +5,7 @@ import api from "../../services/api";
 export const AuthContext = createContext({});
 
 interface AuthProps {
-  children : ReactNode;
+  children: ReactNode;
 }
 
 interface Login {
@@ -17,9 +17,9 @@ export const AuthProvider = ({ children }: AuthProps) => {
   const history = useHistory();
   const [authToken, setAuthToken] = useState(
     () => localStorage.getItem("@kenzie_hamburguer_token") || ""
-    );
-    
-    const signIn = (userData: Login) => {
+  );
+
+  const signIn = (userData: Login) => {
     api
       .post("/login", userData)
       .then((response: any) => {
@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
         setAuthToken(response.data.accessToken);
         history.push("/dashboard");
       })
-      .catch((err:any) => console.log(err));
+      .catch((err: any) => console.log(err));
   };
 
   const logout = () => {
