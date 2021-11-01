@@ -3,6 +3,11 @@ import api from '../../services/api'
 
 interface ProductsProps {
     children: ReactNode;
+    // id: number;
+    // name: string;
+    // category: string;
+    // price: number;
+    // userId: number;
 }
 
 export const ProductsContext = createContext({})
