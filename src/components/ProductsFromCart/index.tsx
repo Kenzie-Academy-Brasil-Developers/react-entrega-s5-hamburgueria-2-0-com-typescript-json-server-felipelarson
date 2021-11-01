@@ -3,8 +3,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, ButtonGroup, Divider, IconButton } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
+import { useListCart } from '../../Provider/Cart';
 
 export default function ProductsFromCart() {
+
+    const { cart, removeFromCart } :any = useListCart();
+    console.log(cart)
   return (
     <>
         <Box
@@ -43,7 +47,7 @@ export default function ProductsFromCart() {
                     <Button><AddIcon /></Button>
                 </ButtonGroup>
                 </Box>
-                <IconButton>
+                <IconButton onClick={removeFromCart}>
                     <DeleteIcon />
                 </IconButton>
             </Box>

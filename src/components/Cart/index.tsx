@@ -5,6 +5,7 @@ import { useModalCart } from '../../Provider/ModalCart';
 import { AppBar, Button, Toolbar } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import ProductsFromCart from '../ProductsFromCart';
+import { useListCart } from '../../Provider/Cart';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -20,6 +21,7 @@ const style = {
 export default function Cart() {
 
   const {openModalCart, handleOpenModalCart} :any = useModalCart();
+  const { cart } :any = useListCart();
 
   return (
     <div>
@@ -31,22 +33,27 @@ export default function Cart() {
         >
             <Box sx={style}>
                 <AppBar position="fixed">
-                     <Toolbar>
+                    <Toolbar>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             Carrinho de compras
                         </Typography>
                         <Button color="inherit" onClick={handleOpenModalCart}><CloseIcon/></Button>
                     </Toolbar>
                 </AppBar>
-                {/* <Typography id="modal-modal-title" variant="h6" component="h2" sx={{mt:'50px'}}>
-                    Sua sacola está vazia
-                </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Adicione itens
-                </Typography> */}
+                {cart ?
+                <>
+                    <Typography id="modal-modal-title" variant="h6" component="h2" sx={{mt:'50px'}}>
+                        Sua sacola está vazia
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        Adicione itens
+                    </Typography>
+                </>
+                :
                 <Box sx={{mt:'50px'}}>
                     <ProductsFromCart />
                 </Box>
+                }
                 <Box sx={{mt:1, display: 'flex', justifyContent: 'space-between'}}>
                     <Typography>Total</Typography>
                     <Typography>R$ 20,00</Typography>
