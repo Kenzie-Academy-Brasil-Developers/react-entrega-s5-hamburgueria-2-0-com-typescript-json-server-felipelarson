@@ -8,17 +8,19 @@ import Typography from '@mui/material/Typography';
 import imgDefault from '../../assets/default.png'
 import { useListCart } from '../../Provider/Cart';
 
-// interface ItemProps {
-//   category: string;
-//   id?: number;
-//   name: string
-//   price: number;
-//   userId?: number;
+interface ItemProps {
+  category: string;
+  id: number;
+  name: string
+  price: number;
+  userId: number;
+}
 
-//   // addToCart: () => void;
-// }
+interface IProps {
+  item: ItemProps
+}
 
-export default function CardShow({ item }: any) {
+export default function CardShow({ item }: IProps) {
 
   const { addToCart }: any = useListCart()
 
