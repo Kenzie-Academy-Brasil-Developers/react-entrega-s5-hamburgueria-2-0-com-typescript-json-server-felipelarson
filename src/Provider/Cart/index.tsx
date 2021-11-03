@@ -3,26 +3,26 @@ import { useAuth } from '../Auth';
 import api from "../../services/api"
 
 
-// interface CartProps {
-//     children: ReactNode;
-// }
+interface CartProps {
+    children: ReactNode;
+}
 
-// interface ProductDataProps {
-//     title: string;
-//     type: string;
-//     price: number;
-//     userId: number;
-//     id: number;
-//     quantity?: number;
-// }
+interface ProductDataProps {
+    title: string;
+    type: string;
+    price: number;
+    userId: number;
+    id: number;
+    quantity?: number;
+}
 
 export const CartContext = createContext({});
 
-export const CartProvider = ({ children } /*: CartProps*/) => {
+export const CartProvider = ({ children }: CartProps) => {
     // const [cart, setCart] = useState<ProductDataProps[]>([]);
     const { authToken } = useAuth()
 
-    const addToCart = (item/*: ProductDataProps*/) => {
+    const addToCart = (item: ProductDataProps) => {
         api
             .post("/cart", item, {
                 headers: {
@@ -64,7 +64,7 @@ export const CartProvider = ({ children } /*: CartProps*/) => {
             .catch()
     }
 
-    const removeFromCart = (id/*: number*/) => {
+    const removeFromCart = (id: number) => {
         api
             .delete(`/cart/${id}`, {
                 headers: {
