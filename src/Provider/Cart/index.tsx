@@ -1,7 +1,7 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { useAuth } from '../Auth';
 import api from "../../services/api"
-
+import jwt_decode from "jwt-decode";
 
 interface CartProps {
     children: ReactNode;
@@ -21,7 +21,22 @@ export const CartContext = createContext({});
 export const CartProvider = ({ children }: CartProps) => {
     const [cart, setCart] = useState<ProductDataProps[]>([]);
     const { authToken }: any = useAuth()
-    console.log({ authToken })
+    const decoded = jwt_decode(authToken)
+    console.log({
+        authToken, decoded
+    })
+
+    const getAllCart = () => {
+        api
+            .post("/cart")
+            .then((res) => setCart(res.data))
+            .catch()
+    }
+
+    useEffect(() => {
+        getAllCart()
+    }, [])
+
     const addToCart = (item: ProductDataProps) => {
         api
             .post("/cart", item, {
@@ -30,7 +45,6 @@ export const CartProvider = ({ children }: CartProps) => {
                 }
             })
             .then((res) => {
-                console.log(res)
                 // toast.success("Produto adicionado com sucesso!");
             })
             .catch()
@@ -77,7 +91,7 @@ export const CartProvider = ({ children }: CartProps) => {
     };
 
     return (
-        <CartContext.Provider value={{ addToCart, addQuantity, subQuantity, removeFromCart }}>
+        <CartContext.Provider value={{ cart, addToCart, addQuantity, subQuantity, removeFromCart }}>
             {children}
         </CartContext.Provider>
     )
