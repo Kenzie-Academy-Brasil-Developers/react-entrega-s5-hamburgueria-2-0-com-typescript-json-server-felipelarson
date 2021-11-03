@@ -17,11 +17,10 @@ interface ItemProps {
 }
 
 interface IProps {
-  item: ItemProps
+  item: ItemProps;
 }
 
 export default function CardShow({ item }: IProps) {
-
   const { addToCart }: any = useListCart()
 
   return (

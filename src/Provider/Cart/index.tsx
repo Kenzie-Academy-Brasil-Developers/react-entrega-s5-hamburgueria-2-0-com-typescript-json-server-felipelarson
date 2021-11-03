@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { createContext, ReactNode, useContext } from 'react';
 import { useAuth } from '../Auth';
 import api from "../../services/api"
 
@@ -20,8 +20,8 @@ export const CartContext = createContext({});
 
 export const CartProvider = ({ children }: CartProps) => {
     // const [cart, setCart] = useState<ProductDataProps[]>([]);
-    const { authToken } = useAuth()
-
+    const authToken = useAuth()
+    console.log({ authToken })
     const addToCart = (item: ProductDataProps) => {
         api
             .post("/cart", item, {
@@ -36,7 +36,7 @@ export const CartProvider = ({ children }: CartProps) => {
             .catch()
     };
 
-    const addQuantity = (id, item) => {
+    const addQuantity = (id: number, item: any) => {
         api
             .post(`/cart/${id}`, item, {
                 headers: {
@@ -50,7 +50,7 @@ export const CartProvider = ({ children }: CartProps) => {
             .catch()
     }
 
-    const subQuantity = (id, item) => {
+    const subQuantity = (id: number, item: any) => {
         api
             .post(`/cart/${id}`, item, {
                 headers: {

@@ -20,7 +20,7 @@ export default function Dashboard() {
   const { listProducts }: any = useProducts()
   const { authToken }: any = useAuth()
   const { openModalCart }: any = useModalCart()
-  console.log(listProducts)
+
   if (!authToken) return <Redirect to="/login" />
 
   return (
