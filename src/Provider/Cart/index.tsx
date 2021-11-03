@@ -14,7 +14,6 @@ interface ProductDataProps {
     userId: number;
     id: number;
     quantity?: number;
-    addToCart: (item: ProductDataProps) => void;
 }
 
 export const CartContext = createContext({});
