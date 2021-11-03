@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext } from 'react';
+import { createContext, ReactNode, useContext, useState } from 'react';
 import { useAuth } from '../Auth';
 import api from "../../services/api"
 
@@ -14,13 +14,14 @@ interface ProductDataProps {
     userId: number;
     id: number;
     quantity?: number;
+    addToCart: (item: ProductDataProps) => void;
 }
 
 export const CartContext = createContext({});
 
 export const CartProvider = ({ children }: CartProps) => {
-    // const [cart, setCart] = useState<ProductDataProps[]>([]);
-    const authToken = useAuth()
+    const [cart, setCart] = useState<ProductDataProps[]>([]);
+    const { authToken }: any = useAuth()
     console.log({ authToken })
     const addToCart = (item: ProductDataProps) => {
         api
@@ -44,7 +45,7 @@ export const CartProvider = ({ children }: CartProps) => {
                 }
             })
             .then((res) => {
-                console.log(res)
+                console.log(res.data)
                 // toast.success("Produto acrescido com sucesso!");
             })
             .catch()
