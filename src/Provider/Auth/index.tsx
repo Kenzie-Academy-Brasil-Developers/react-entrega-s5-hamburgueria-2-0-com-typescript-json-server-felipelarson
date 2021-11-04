@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
     api
       .post("/login", userData)
       .then((response: any) => {
-        localStorage.setItem("@kenzie_hamburguer_token", response.data.accessToken);
+        JSON.stringify(localStorage.setItem("@kenzie_hamburguer_token", response.data.accessToken));
         setAuthToken(response.data.accessToken);
         history.push("/dashboard");
       })

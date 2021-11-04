@@ -1,18 +1,18 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { useAuth } from '../Auth';
 import api from "../../services/api"
-import jwt_decode from "jwt-decode";
 
 interface CartProps {
     children: ReactNode;
 }
 
 interface ProductDataProps {
+    id: number;
     title: string;
     type: string;
     price: number;
     userId: number;
-    quantity?: number;
+    quantity: number;
 }
 
 export const CartContext = createContext({});
@@ -20,16 +20,18 @@ export const CartContext = createContext({});
 export const CartProvider = ({ children }: CartProps) => {
     const [cart, setCart] = useState<ProductDataProps[]>([]);
     const { authToken }: any = useAuth()
-    // const decoded = jwt_decode(authToken) || ""
 
     const getAllCart = () => {
         api
-            .post("/cart", {
+            .get("/cart", {
                 headers: {
                     Authorization: `Bearer ${authToken}`,
                 }
             })
-            .then((res) => setCart([res.data]))
+            .then((res) => {
+                console.log(res)
+                res.data.length !== 0 && setCart(res.data)
+            })
             .catch(err => console.log(err.message))
     }
 
@@ -38,14 +40,17 @@ export const CartProvider = ({ children }: CartProps) => {
     }, [])
 
     const addToCart = (item: ProductDataProps) => {
+        item["userId"] = item.id
+        // item["quantity"] === undefined ? item["quantity"] = 1 : item["quantity"] += 1
+
         api
-            .post("/cart", item, {
+            .post("/cart/", item, {
                 headers: {
                     Authorization: `Bearer ${authToken}`,
                 }
             })
-            .then((res) => {
-                setCart([...cart, res.data])
+            .then((_) => {
+                getAllCart()
                 // toast.success("Produto adicionado com sucesso!");
             })
             .catch(err => console.log(err.message))
@@ -53,7 +58,7 @@ export const CartProvider = ({ children }: CartProps) => {
 
     const addQuantity = (id: number, item: any) => {
         api
-            .post(`/cart/${id}`, item, {
+            .put(`/cart/${id}`, item, {
                 headers: {
                     Authorization: `Bearer ${authToken}`,
                 }
