@@ -30,7 +30,6 @@ export const CartProvider = ({ children }: CartProps) => {
                 }
             })
             .then((res) => {
-                console.log(res.data)
                 res.data.length !== 0 && setCart(res.data)
             })
             .catch(err => console.log(err.message))
@@ -44,7 +43,7 @@ export const CartProvider = ({ children }: CartProps) => {
     const addToCart = (item: ProductDataProps) => {
         const id = JSON.parse(localStorage.getItem('@kenzie_hamburguer_user_id') || "")
         item["userId"] = id
-        // item["quantity"] === undefined ? item["quantity"] = 1 : item["quantity"] += 1
+        item["quantity"] === undefined ? item["quantity"] = 1 : item["quantity"] += 1
 
         api
             .post("/cart/", item, {
@@ -68,7 +67,6 @@ export const CartProvider = ({ children }: CartProps) => {
                 }
             })
             .then((res) => {
-                console.log(res.data)
                 // toast.success("Produto acrescido com sucesso!");
             })
             .catch()
@@ -82,7 +80,6 @@ export const CartProvider = ({ children }: CartProps) => {
                 }
             })
             .then((res) => {
-                console.log(res)
                 // toast.success("Produto diminuido com sucesso!");
             })
             .catch()
@@ -95,7 +92,7 @@ export const CartProvider = ({ children }: CartProps) => {
                     Authorization: `Bearer ${authToken}`,
                 },
             })
-            .then(() => {
+            .then((_) => {
                 // toast.success("Produto removido com sucesso!");
             });
     };

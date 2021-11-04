@@ -47,7 +47,7 @@ export default function ProductsFromCart({ cart }: any) {
                             <Button><AddIcon /></Button>
                         </ButtonGroup>
                     </Box>
-                    <IconButton onClick={removeFromCart}>
+                    <IconButton onClick={() => removeFromCart(cart.id)}>
                         <DeleteIcon />
                     </IconButton>
                 </Box>
