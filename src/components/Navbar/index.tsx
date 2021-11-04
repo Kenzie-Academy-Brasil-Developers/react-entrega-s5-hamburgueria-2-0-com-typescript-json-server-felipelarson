@@ -11,12 +11,12 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import brand from './../../assets/BurguerKenzie.png'
 import { useAuth } from '../../Provider/Auth';
 import { useModalCart } from '../../Provider/ModalCart';
+import { useListCart } from '../../Provider/Cart';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -62,6 +62,7 @@ export default function Navbar() {
 
   const { logout }: any = useAuth();
   const { handleOpenModalCart }: any = useModalCart();
+  const { cart }: any = useListCart()
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -129,24 +130,13 @@ export default function Navbar() {
     >
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="primary">
+          <Badge badgeContent={cart.lenth} color="primary">
             <ShoppingCartIcon />
           </Badge>
         </IconButton>
         <p>Carrinho</p>
       </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="primary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
+
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -197,19 +187,11 @@ export default function Navbar() {
               />
             </Search>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit" onClick={handleOpenModalCart}>
-              <Badge badgeContent={4} color="primary">
+              <Badge badgeContent={cart.length} color="primary">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="primary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+
             <IconButton
               size="large"
               edge="end"
