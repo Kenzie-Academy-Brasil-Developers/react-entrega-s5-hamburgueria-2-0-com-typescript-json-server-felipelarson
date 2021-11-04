@@ -51,9 +51,7 @@ export default function Cart() {
                         </>
                         :
                         <Box sx={{ mt: '50px' }}>
-                            {
-                                cart.map((product: any, idx: number) => <ProductsFromCart key={idx} cart={cart} />)
-                            }
+                            <ProductsFromCart />
                         </Box>
                     }
                     {

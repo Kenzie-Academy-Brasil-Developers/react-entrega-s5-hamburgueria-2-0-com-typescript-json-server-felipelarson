@@ -87,13 +87,14 @@ export const CartProvider = ({ children }: CartProps) => {
 
     const removeFromCart = (id: number) => {
         api
-            .delete(`/cart/${id}`, {
+            .delete(`/cart/${id}/`, {
                 headers: {
                     Authorization: `Bearer ${authToken}`,
                 },
             })
             .then((_) => {
                 // toast.success("Produto removido com sucesso!");
+                getAllCart()
             });
     };
 
