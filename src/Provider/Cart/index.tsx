@@ -21,6 +21,7 @@ export const CartProvider = ({ children }: CartProps) => {
     const [cart, setCart] = useState<ProductDataProps[]>([]);
     const { authToken }: any = useAuth()
 
+
     const getAllCart = () => {
         api
             .get("/cart/", {
@@ -41,8 +42,9 @@ export const CartProvider = ({ children }: CartProps) => {
     }, [])
 
     const addToCart = (item: ProductDataProps) => {
-        item["userId"] = item.id
-        item["quantity"] = 1
+        const id = JSON.parse(localStorage.getItem('@kenzie_hamburguer_user_id') || "")
+        item["userId"] = id
+        // item["quantity"] === undefined ? item["quantity"] = 1 : item["quantity"] += 1
 
         api
             .post("/cart/", item, {
@@ -50,8 +52,8 @@ export const CartProvider = ({ children }: CartProps) => {
                     Authorization: `Bearer ${authToken}`,
                 }
             })
-            .then((res) => {
-                setCart([...cart, res.data])
+            .then((_) => {
+                // setCart([...cart, res.data])
                 getAllCart()
                 // toast.success("Produto adicionado com sucesso!");
             })

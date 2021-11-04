@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
       .post("/login", userData)
       .then((response: any) => {
         JSON.stringify(localStorage.setItem("@kenzie_hamburguer_token", response.data.accessToken));
+        JSON.stringify(localStorage.setItem("@kenzie_hamburguer_user_id", response.data.user.id))
         setAuthToken(response.data.accessToken);
         history.push("/dashboard");
       })
