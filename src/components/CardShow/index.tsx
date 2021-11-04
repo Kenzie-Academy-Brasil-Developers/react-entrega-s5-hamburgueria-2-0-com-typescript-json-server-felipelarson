@@ -25,7 +25,7 @@ export default function CardShow({ item }: IProps) {
 
   return (
 
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, border: "2px solid grey", ":hover": { border: "2px solid #27AE60" } }}>
       <CardMedia
         component="img"
         height="140"
@@ -46,6 +46,6 @@ export default function CardShow({ item }: IProps) {
       <CardActions>
         <Button variant="contained" onClick={() => addToCart(item)}>Adicionar</Button>
       </CardActions>
-    </Card>
+    </Card >
   );
 }
