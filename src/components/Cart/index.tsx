@@ -40,7 +40,7 @@ export default function Cart() {
                             <Button color="inherit" onClick={handleOpenModalCart}><CloseIcon /></Button>
                         </Toolbar>
                     </AppBar>
-                    {cart ?
+                    {cart.length === 0 ?
                         <>
                             <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ mt: '50px' }}>
                                 Sua sacola está vazia
@@ -51,14 +51,25 @@ export default function Cart() {
                         </>
                         :
                         <Box sx={{ mt: '50px' }}>
-                            <ProductsFromCart />
+                            {
+                                cart.map((product: any, idx: number) => <ProductsFromCart key={idx} cart={cart} />)
+                            }
                         </Box>
                     }
-                    <Box sx={{ mt: 1, display: 'flex', justifyContent: 'space-between' }}>
-                        <Typography>Total</Typography>
-                        <Typography>R$ 20,00</Typography>
-                    </Box>
-                    <Button fullWidth variant="contained" sx={{ mt: 1 }}>RemoverTodos</Button>
+                    {
+                        cart.length !== 0 &&
+                        <>
+                            <Box sx={{ mt: 1, display: 'flex', justifyContent: 'space-between' }}>
+                                <Typography>Total</Typography>
+                                <Typography>R$
+                                    {
+                                        cart && cart.reduce((acc: any, num: any) => acc + Number(num.price), 0).toFixed(2)
+                                    }
+                                </Typography>
+                            </Box>
+                            <Button fullWidth variant="contained" sx={{ mt: 1 }}>RemoverTodos</Button>
+                        </>
+                    }
                 </Box>
             </Modal>
         </div>

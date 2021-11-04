@@ -5,10 +5,10 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import { useListCart } from '../../Provider/Cart';
 
-export default function ProductsFromCart() {
+export default function ProductsFromCart({ cart }: any) {
 
-    const { cart, removeFromCart }: any = useListCart();
-    console.log(cart)
+    const { removeFromCart }: any = useListCart();
+    console.log("cart", cart)
     return (
         <>
             <Box
@@ -40,7 +40,7 @@ export default function ProductsFromCart() {
                     }}
                 >
                     <Box component="span" sx={{ fontSize: 16, mt: 1, display: 'flex', flexDirection: 'column', }}>
-                        Título
+                        {cart[0].name}
                         <ButtonGroup variant="contained" size="small" aria-label="outlined primary button group" sx={{ mt: 2, boxShadow: 0 }}>
                             <Button><RemoveIcon /></Button>
                             <Button variant="outlined">1</Button>

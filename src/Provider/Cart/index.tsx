@@ -12,7 +12,6 @@ interface ProductDataProps {
     type: string;
     price: number;
     userId: number;
-    id: number;
     quantity?: number;
 }
 
@@ -21,16 +20,17 @@ export const CartContext = createContext({});
 export const CartProvider = ({ children }: CartProps) => {
     const [cart, setCart] = useState<ProductDataProps[]>([]);
     const { authToken }: any = useAuth()
-    const decoded = jwt_decode(authToken)
-    console.log({
-        authToken, decoded
-    })
+    // const decoded = jwt_decode(authToken) || ""
 
     const getAllCart = () => {
         api
-            .post("/cart")
-            .then((res) => setCart(res.data))
-            .catch()
+            .post("/cart", {
+                headers: {
+                    Authorization: `Bearer ${authToken}`,
+                }
+            })
+            .then((res) => setCart([res.data]))
+            .catch(err => console.log(err.message))
     }
 
     useEffect(() => {
@@ -45,9 +45,10 @@ export const CartProvider = ({ children }: CartProps) => {
                 }
             })
             .then((res) => {
+                setCart([...cart, res.data])
                 // toast.success("Produto adicionado com sucesso!");
             })
-            .catch()
+            .catch(err => console.log(err.message))
     };
 
     const addQuantity = (id: number, item: any) => {
