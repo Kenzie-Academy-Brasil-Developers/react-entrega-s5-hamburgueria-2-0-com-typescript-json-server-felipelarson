@@ -1,8 +1,6 @@
 import Box from '@mui/material/Box';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Button, ButtonGroup, Divider, IconButton } from '@mui/material';
-import RemoveIcon from '@mui/icons-material/Remove';
-import AddIcon from '@mui/icons-material/Add';
+import { Divider, IconButton, Typography } from '@mui/material';
 import { useListCart } from '../../Provider/Cart';
 
 export default function ProductsFromCart() {
@@ -43,12 +41,8 @@ export default function ProductsFromCart() {
                                 }}
                             >
                                 <Box component="span" sx={{ fontSize: 16, mt: 1, display: 'flex', flexDirection: 'column', }}>
-                                    {item.name}
-                                    <ButtonGroup variant="contained" size="small" aria-label="outlined primary button group" sx={{ mt: 2, boxShadow: 0 }}>
-                                        <Button><RemoveIcon /></Button>
-                                        <Button variant="outlined">1</Button>
-                                        <Button><AddIcon /></Button>
-                                    </ButtonGroup>
+                                    <Typography>{item.name}</Typography>
+                                    <Typography>R$ {item.price}</Typography>
                                 </Box>
                                 <IconButton onClick={() => removeFromCart(item.id)}>
                                     <DeleteIcon />
