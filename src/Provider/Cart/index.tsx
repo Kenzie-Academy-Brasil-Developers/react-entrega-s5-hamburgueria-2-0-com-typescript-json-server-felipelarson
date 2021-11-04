@@ -23,13 +23,13 @@ export const CartProvider = ({ children }: CartProps) => {
 
     const getAllCart = () => {
         api
-            .get("/cart", {
+            .get("/cart/", {
                 headers: {
                     Authorization: `Bearer ${authToken}`,
                 }
             })
             .then((res) => {
-                console.log(res)
+                console.log(res.data)
                 res.data.length !== 0 && setCart(res.data)
             })
             .catch(err => console.log(err.message))
@@ -37,11 +37,12 @@ export const CartProvider = ({ children }: CartProps) => {
 
     useEffect(() => {
         getAllCart()
+        // eslint-disable-next-line
     }, [])
 
     const addToCart = (item: ProductDataProps) => {
         item["userId"] = item.id
-        // item["quantity"] === undefined ? item["quantity"] = 1 : item["quantity"] += 1
+        item["quantity"] = 1
 
         api
             .post("/cart/", item, {
@@ -49,7 +50,8 @@ export const CartProvider = ({ children }: CartProps) => {
                     Authorization: `Bearer ${authToken}`,
                 }
             })
-            .then((_) => {
+            .then((res) => {
+                setCart([...cart, res.data])
                 getAllCart()
                 // toast.success("Produto adicionado com sucesso!");
             })
